@@ -9,4 +9,8 @@ public class BeltSubsytem extends SubsystemBase
 
     }
     private final WPI_TalonSRX m_belt = new WPI_TalonSRX(DriveConstants.convayor);
+    public void belt(double speed)
+    {
+        m_belt.set(speed);
+    }
 }

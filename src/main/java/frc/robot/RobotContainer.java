@@ -80,11 +80,11 @@ public class RobotContainer {
         .whenPressed(() -> m_robotDrive.setMaxOutput(0.5))
         .whenReleased(() -> m_robotDrive.setMaxOutput(1));
     new JoystickButton(m_driverController, Button.kR1.value)
-        .whileHeld(() -> m_shooter.set(m_driverController.getRawAxis(3)))
-        .whenReleased(() -> m_shooter.set(0));
+        .whileHeld(m_shooter.shoot(m_driverController.getRawAxis(3)))
+        .whenReleased(m_shooter.shoot(0));
     new JoystickButton(m_driverController, 2)
-        .whileHeld(() -> m_intake.set(7))
-        .whenReleased(() -> m_intake.set(0));
+        .whileHeld(m_intake.intake(.7))
+        .whenReleased(new intake(0));
     new JoystickButton(m_driverController, 3)
         .whileHeld(() -> m_belt.set(.4))
         .whenReleased(() -> m_belt.set(0));
