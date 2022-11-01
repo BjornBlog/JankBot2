@@ -3,9 +3,7 @@
 // the WPILib BSD license file in the root directory of this project.
 
 package frc.robot;
-
 import static edu.wpi.first.wpilibj.PS4Controller.Button;
-
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.PS4Controller;
@@ -32,6 +30,15 @@ public class RobotContainer {
 
   // The driver's controller
   Joystick m_driverController = new Joystick(OIConstants.kDriverControllerPort);
+  JoystickButton button1 = new JoystickButton(m_driverController, 1);
+  JoystickButton button2 = new JoystickButton(m_driverController, 2);
+  JoystickButton button3 = new JoystickButton(m_driverController, 3);
+  JoystickButton button4 = new JoystickButton(m_driverController, 4);
+  JoystickButton button5 = new JoystickButton(m_driverController, 5);
+  JoystickButton button6 = new JoystickButton(m_driverController, 6);
+  JoystickButton button7 = new JoystickButton(m_driverController, 7);
+  JoystickButton button8 = new JoystickButton(m_driverController, 8);
+  //FlightStick stick = new FlightStick(0);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -45,9 +52,10 @@ public class RobotContainer {
         // hand, and turning controlled by the right.
         new RunCommand(
             () ->
-                m_robotDrive.arcadeDrive(
+            m_robotDrive.arcadeDrive(
                     -m_driverController.getRawAxis(1), m_driverController.getRawAxis(0)),
             m_robotDrive));
+
   }
 
   /**
@@ -78,7 +86,7 @@ public class RobotContainer {
                 output -> m_robotDrive.arcadeDrive(-m_driverController.getRawAxis(0), output),
                 // Require the robot drive
                 m_robotDrive));
-
+                //button8.whileHeld(new run);
     // Turn to 90 degrees when the 'X' button is pressed, with a 5 second timeout
     new JoystickButton(m_driverController, Button.kCross.value)
         .whenPressed(new TurnToAngle(90, m_robotDrive).withTimeout(5));
