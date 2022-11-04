@@ -4,10 +4,10 @@
 
 package frc.robot;
 import static edu.wpi.first.wpilibj.PS4Controller.Button;
-import edu.wpi.first.math.controller.PIDController;
+//import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.PS4Controller;
-import frc.robot.Constants.DriveConstants;
+//import frc.robot.Constants.DriveConstants;
 import frc.robot.Constants.OIConstants;
 // import frc.robot.commands.TurnToAngle;
 // import frc.robot.commands.TurnToAngleProfiled;
@@ -17,7 +17,7 @@ import frc.robot.subsystems.BeltSubsytem;
 import frc.robot.subsystems.IntakeSubsytem;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
-import edu.wpi.first.wpilibj2.command.PIDCommand;
+//import edu.wpi.first.wpilibj2.command.PIDCommand;
 import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
@@ -78,12 +78,12 @@ public class RobotContainer {
         .whenReleased(() -> m_robotDrive.setMaxOutput(1));
     new JoystickButton(m_driverController, Button.kR1.value)
         .whileHeld(() -> m_shooter.shoot((m_driverController.getRawAxis(3))))
-        .whenReleased(() -> m_shooter.shoot(0));
+        .whenReleased(() -> m_shooter.shoot(0));;
     new JoystickButton(m_driverController, 2)
         .whileHeld(() -> m_intake.intake(-.7))
         .whenReleased(() -> m_intake.intake(0));
     new JoystickButton(m_driverController, 3)
-        .whileHeld(() -> m_belt.belt(.4))
+        .whileHeld(() -> m_belt.belt((m_driverController.getRawAxis(3))))
         .whenReleased(() -> m_belt.belt(0));
     new JoystickButton(m_driverController, 4)
         .whileHeld(() -> m_belt.belt(-.4))
