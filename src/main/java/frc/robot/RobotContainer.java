@@ -4,16 +4,13 @@
 
 package frc.robot;
 import static edu.wpi.first.wpilibj.PS4Controller.Button;
-
-import javax.print.event.PrintEvent;
-
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.PS4Controller;
 import frc.robot.Constants.DriveConstants;
 import frc.robot.Constants.OIConstants;
-import frc.robot.commands.TurnToAngle;
-import frc.robot.commands.TurnToAngleProfiled;
+// import frc.robot.commands.TurnToAngle;
+// import frc.robot.commands.TurnToAngleProfiled;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
 import frc.robot.subsystems.BeltSubsytem;
@@ -80,19 +77,19 @@ public class RobotContainer {
         .whenPressed(() -> m_robotDrive.setMaxOutput(0.5))
         .whenReleased(() -> m_robotDrive.setMaxOutput(1));
     new JoystickButton(m_driverController, Button.kR1.value)
-        .whileHeld(m_shooter.shoot(m_driverController.getRawAxis(3)))
-        .whenReleased(m_shooter.shoot(0));
+        .whileHeld(() -> m_shooter.shoot((m_driverController.getRawAxis(3))))
+        .whenReleased(() -> m_shooter.shoot(0));
     new JoystickButton(m_driverController, 2)
-        .whileHeld(m_intake.intake(.7))
-        .whenReleased(new intake(0));
+        .whileHeld(() -> m_intake.intake(-.7))
+        .whenReleased(() -> m_intake.intake(0));
     new JoystickButton(m_driverController, 3)
-        .whileHeld(() -> m_belt.set(.4))
-        .whenReleased(() -> m_belt.set(0));
+        .whileHeld(() -> m_belt.belt(.4))
+        .whenReleased(() -> m_belt.belt(0));
     new JoystickButton(m_driverController, 4)
-        .whileHeld(() -> m_belt.set(-.4))
-        .whenReleased(() -> m_belt.set(0));
+        .whileHeld(() -> m_belt.belt(-.4))
+        .whenReleased(() -> m_belt.belt(0));
     // Stabilize robot to drive straight with gyro when left bumper is held
-    new JoystickButton(m_driverController, Button.kL1.value)
+    /*new JoystickButton(m_driverController, Button.kL1.value)
         .whenHeld(
             new PIDCommand(
                 new PIDController(
@@ -115,6 +112,7 @@ public class RobotContainer {
     // Turn to -90 degrees with a profile when the Circle button is pressed, with a 5 second timeout
     new JoystickButton(m_driverController, Button.kCircle.value)
         .whenPressed(new TurnToAngleProfiled(-90, m_robotDrive).withTimeout(5));
+    */
   }
 
   /**

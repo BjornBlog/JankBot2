@@ -9,8 +9,8 @@ public class IntakeSubsytem extends SubsystemBase
         
     }
     private final WPI_TalonSRX m_intake = new WPI_TalonSRX(DriveConstants.intake);
-    public void intake()
+    public void intake(double speed)
     {
-        m_intake.set(.5);
+        m_intake.set(speed);
     }
 }

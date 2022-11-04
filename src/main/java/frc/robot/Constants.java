@@ -20,7 +20,7 @@ public final class Constants {
     public static final int kRightMotor2Port = 4;
     public static final int shooterMotor = 6;
     public static final int convayor = 1;
-    public static final int intake = 0;
+    public static final int intake = 10;
 
     public static final int[] kLeftEncoderPorts = new int[] {0, 1};
     public static final int[] kRightEncoderPorts = new int[] {2, 3};

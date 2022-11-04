@@ -43,7 +43,7 @@ public class DriveSubsystem extends SubsystemBase {
           DriveConstants.kRightEncoderReversed);
 
   // The gyro sensor
-  private final Gyro m_gyro = new ADXRS450_Gyro();
+  //private final Gyro m_gyro = new ADXRS450_Gyro();
 
   /** Creates a new DriveSubsystem. */
   public DriveSubsystem() {
@@ -109,26 +109,28 @@ public class DriveSubsystem extends SubsystemBase {
     m_drive.setMaxOutput(maxOutput);
   }
 
-  /** Zeroes the heading of the robot. */
+  /** Zeroes the heading of the robot. 
   public void zeroHeading() {
     m_gyro.reset();
   }
+  */
 
   /**
    * Returns the heading of the robot.
    *
    * @return the robot's heading in degrees, from 180 to 180
-   */
+   
   public double getHeading() {
     return Math.IEEEremainder(m_gyro.getAngle(), 360) * (DriveConstants.kGyroReversed ? -1.0 : 1.0);
   }
-
+  */
   /**
    * Returns the turn rate of the robot.
    *
    * @return The turn rate of the robot, in degrees per second
-   */
+   
   public double getTurnRate() {
     return m_gyro.getRate() * (DriveConstants.kGyroReversed ? -1.0 : 1.0);
   }
+  */
 }
