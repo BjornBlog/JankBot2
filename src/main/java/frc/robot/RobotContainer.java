@@ -3,7 +3,6 @@
 // the WPILib BSD license file in the root directory of this project.
 
 package frc.robot;
-import static edu.wpi.first.wpilibj.PS4Controller.Button;
 //import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.PS4Controller;
@@ -80,7 +79,7 @@ public class RobotContainer {
         .whileHeld(() -> m_shooter.shoot((m_driverController.getRawAxis(3))))
         .whenReleased(() -> m_shooter.shoot(0));;
     button2
-        .whileHeld(() -> m_intake.intake(-.7))
+        .whileHeld(() -> m_intake.intake((m_driverController.getRawAxis(3))))
         .whenReleased(() -> m_intake.intake(0));
     button3
         .whileHeld(() -> m_belt.belt(-.4))
