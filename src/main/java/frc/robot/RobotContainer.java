@@ -3,9 +3,12 @@
 // the WPILib BSD license file in the root directory of this project.
 
 package frc.robot;
+import java.sql.Date;
+
 //import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.PS4Controller;
+import frc.robot.Constants.DriveConstants;
 //import frc.robot.Constants.DriveConstants;
 import frc.robot.Constants.OIConstants;
 // import frc.robot.commands.TurnToAngle;
@@ -82,7 +85,7 @@ public class RobotContainer {
         .whileHeld(() -> m_intake.intake((m_driverController.getRawAxis(3))))
         .whenReleased(() -> m_intake.intake(0));
     button3
-        .whileHeld(() -> m_belt.belt(-.4))
+        .whileHeld(() -> m_belt.belt(.4))
         .whenReleased(() -> m_belt.belt(0));
     button4
         .whileHeld(() -> m_belt.belt(-.4))
@@ -121,6 +124,6 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand() {
     // no auto
-    return new InstantCommand();
+    return new RunCommand(() -> m_robotDrive.arcadeDrive(.5, 0), m_robotDrive).withTimeout(3);
   }
 }
